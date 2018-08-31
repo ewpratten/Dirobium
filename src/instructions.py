@@ -1,6 +1,7 @@
 import shareddata as globl
 import system as system
 import registers as registers
+import call as caller
 
 def decode(frm):
 	#check type of frm and turn back to int
@@ -91,7 +92,9 @@ def ret(params):
 	decodeTo(["00000101", "00000001"], decode(value))
 
 def call(params):
-	print("call")
+	callid = [params[1], params[2]]
+	callid = decode(callid)
+	caller.call(callid)
 
 def jmpf(params):
 	print("jmpf")
