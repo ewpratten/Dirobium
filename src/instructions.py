@@ -63,13 +63,32 @@ def sub(params):
 	decodeTo(to, val_sum)
 
 def mul(params):
-	print("mul")
+	v1 = [params[1], params[2]]
+	v2 = [params[3], params[4]]
+	to = [params[5], params[6]]
+	
+	v1 = decode(v1)
+	v2 = decode(v2)
+	
+	val_sum = v1 * v2
+	
+	decodeTo(to, val_sum)
 
 def div(params):
-	print("div")
+	v1 = [params[1], params[2]]
+	v2 = [params[3], params[4]]
+	to = [params[5], params[6]]
+	
+	v1 = decode(v1)
+	v2 = decode(v2)
+	
+	val_sum = v1 / v2
+	
+	decodeTo(to, val_sum)
 
 def ret(params):
-	print("ret")
+	value = [params[1], params[2]]
+	decodeTo(["00000101", "00000001"], decode(value))
 
 def call(params):
 	print("call")
