@@ -30,9 +30,9 @@ mkdir ~/dirobium
 mkdir ~/dirobium/devices
 touch ~/dirobium/bootloader.rom ~/dirobium/main.rom
 mv ./dirobium ~/dirobium/
-echo "#!/bin/bash" > /usr/local/bin/enter-dirobium
+echo "#\!/bin/bash" > /usr/local/bin/enter-dirobium
 echo "cd ~/dirobium" >> /usr/local/bin/enter-dirobium
-chmof 755 /usr/local/bin/enter-dirobium
+chmod 755 /usr/local/bin/enter-dirobium
 ```
 
 Now, run `enter-dirobium` and you are in the emulation environment (run this command any time you want to go back into the folder)
