@@ -8,4 +8,4 @@ globl.mode = globl.modes.bootloader	#set current mode to bootloader
 
 execution.run(globl.bootloader)
 
-system.coredump()
+# system.coredump()

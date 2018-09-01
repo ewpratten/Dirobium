@@ -2,6 +2,7 @@ import shareddata as globl
 import system as system
 import registers as registers
 import call as caller
+import execution as execution
 
 def decode(frm):
 	#check type of frm and turn back to int
@@ -103,4 +104,23 @@ def jmpb(params):
 	print("jmpb")
 
 def jmp(params):
-	print("jmp")
+	if params[1] == "00000011" and len(params) >= 2 and decode([params[2], params[3]]) == 0:
+		globl.mode = globl.modes.rom
+		execution.run(globl.rom)
+		
+
+def paus(params):
+	ins = [params[1], params[2]]
+	ins = decode(ins)
+	if ins == 0:
+		input()
+	if ins == 1:
+		registers.extended[0] = input()
+
+def load(params):
+	if params[1] == "00000011":
+		globl.rom = system.loadRom()
+	else:
+		system.coredump()
+		exit(1)
+	
