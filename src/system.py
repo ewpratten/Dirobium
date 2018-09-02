@@ -13,5 +13,6 @@ def coredump(inp=None):
 	print("-- Core Dump --")
 	print("General Registers: " + str(registers.general))
 	print("Extended Registers: " + str(registers.extended))
-	
+	print("Stack: " + str(registers.stack))
+	# exit(1)
 	# print("-- End Core Dump --")
