@@ -5,6 +5,7 @@ def push(params):
 	frm = [params[1], params[2], params]
 	
 	frm = ed.decode(frm)
+	# print(frm)
 	registers.stack.append(frm)
 
 def pop(params):

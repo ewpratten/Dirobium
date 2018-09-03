@@ -39,11 +39,14 @@ string_letters = {
 }
 
 def decode(frm):
+	# print(frm[0])
 	#check type of frm and turn back to int
 	if frm[0] == "00000001":
 		frm = int(frm[1], 2)
-	elif frm[0] == "000000010":
+	elif frm[0] == "00000010":
+		
 		frm = registers.general[int(frm[1], 2)]
+		# print(frm)
 	elif frm[0] == "00000011":
 		print("rom")
 	elif frm[0] == "00000100":
@@ -97,15 +100,17 @@ def movs(params):
 	decodeTo(to,frm)
 
 def add(params):
+	
 	v1 = [params[1], params[2], params]
 	v2 = [params[3], params[4], params]
 	to = [params[5], params[6]]
 	
 	v1 = decode(v1)
+	# print(v2)
 	v2 = decode(v2)
 	
 	val_sum = v1 + v2
-	
+	# print(val_sum)
 	decodeTo(to, val_sum)
 
 def sub(params):

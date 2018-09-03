@@ -1,8 +1,10 @@
+import registers as registers
+import system as system
 def decode(frm):
 	#check type of frm and turn back to int
 	if frm[0] == "00000001":
 		frm = int(frm[1], 2)
-	elif frm[0] == "000000010":
+	elif frm[0] == "00000010":
 		frm = registers.general[int(frm[1], 2)]
 	elif frm[0] == "00000011":
 		print("rom")
@@ -19,6 +21,8 @@ def decode(frm):
 			i+=1
 		frm = ret
 		# print(frm)
+	elif frm[0] == "000000111":
+		frm = registers.read_only[int(frm[1], 2)]
 	else:
 		system.coredump()
 		exit(1)

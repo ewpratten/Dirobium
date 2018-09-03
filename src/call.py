@@ -7,7 +7,10 @@ sys.path.append(os.getcwd() + "/devices")
 def call(callid):
 	if str(callid) == "0":
 		exit(0)
-	calls[str(callid)].call(registers.general, registers.extended)
+	if str(callid) == "11":
+		print(registers.stack[registers.read_only[0] - 1])
+	else:
+		calls[str(callid)].call(registers.general, registers.extended)
 	
 
 try:

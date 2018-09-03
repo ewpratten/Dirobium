@@ -3,6 +3,7 @@ import pushandpop as pnp
 import system as system
 import shareddata as globl
 import jump as jmp
+import compare as comp
 
 # Map all valid instructin opcodes to a function
 execute = {
@@ -21,7 +22,10 @@ execute = {
 	"10001110":system.coredump,
 	"10001111":ins.movs,
 	"10010000":pnp.push,
-	"10010001":pnp.pop
+	"10010001":pnp.pop,
+	"10010010":comp.comp,
+	"10010011":comp.lte,
+	"10010100":comp.gte
 }
 
 # loop through code and run instructions
@@ -30,12 +34,14 @@ def run(code):
 		while globl.bootl < len(globl.bootloader):
 			if globl.bootloader[globl.bootl] in execute:
 				execute[globl.bootloader[globl.bootl]](code[globl.bootl:])
+				system.setRORegisters()
 			globl.bootl += 1
 		
 	elif code == globl.rom:
 		while globl.roml < len(globl.rom):
 			if globl.rom[globl.roml] in execute:
 				execute[globl.rom[globl.roml]](code[globl.roml:])
+				system.setRORegisters()
 			globl.roml += 1
 	# else:
 	# 	i = 0
